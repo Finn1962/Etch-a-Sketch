@@ -1,0 +1,15 @@
+body{
+    margin: 0px;
+    background-color: rgb(243, 243, 243);
+}
+
+
+
+.zeichenfläche{
+    background-color: rgb(255, 255, 255);
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    aspect-ratio: 1 / 1;
+}
