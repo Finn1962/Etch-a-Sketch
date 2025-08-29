@@ -5,11 +5,16 @@ body{
 
 
 
-.zeichenfläche{
-    background-color: rgb(255, 255, 255);
+.zeichenflaecheClasse{
     margin-top: 5%;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
     aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.pixelClasse {
+    background-color: white;
 }
