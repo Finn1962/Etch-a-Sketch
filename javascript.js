@@ -1,7 +1,7 @@
+//Erstellung der Zeichenflaeche durch verschachtelte Arrays
 document.addEventListener("DOMContentLoaded", function erstellungZeichenflaeche(){
-    
-    //Erstellung der Zeichenfläche durch verschachtelten Arrays
-    const zeichenflaecheBreite_X = (5);
+
+    const zeichenflaecheBreite_X = (20);
     const zeichenflaeche = document.getElementById("zeichenflaeche");
     const zeichenfleacheBreiteInPixel = (zeichenflaeche.clientWidth)
 
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function erstellungZeichenflaeche(
         for (let x = 0; x < zeichenflaecheBreite_X; x++) {
 
             const pixel = document.createElement("div");
-            pixel.id = "("+(y)+"/"+(x)+")";
+            pixel.id = "("+(y)+"|"+(x)+")";
             pixel.classList.add('pixelClasse');
             const pixelGroesse = (zeichenfleacheBreiteInPixel / zeichenflaecheBreite_X);
             pixel.style.width = pixelGroesse + "px";
@@ -28,3 +28,18 @@ document.addEventListener("DOMContentLoaded", function erstellungZeichenflaeche(
         }
     }  
 });
+
+
+
+//Funktionsweise fuer die Pixel
+    
+    window.addEventListener('click', function(event) {
+
+            const mausPositionX = event.clientX;
+            const mausPositionY = event.clientY;
+            const hoveredElement = document.elementFromPoint(mausPositionX, mausPositionY);
+            console.log(hoveredElement);
+            let pixel = hoveredElement
+            pixel.style.backgroundColor = "black"; 
+         
+    });    

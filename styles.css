@@ -6,13 +6,14 @@ body{
 
 
 .zeichenflaecheClasse{
-    margin-top: 5%;
+    margin-top: 10%;
+    margin-bottom: 30%;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
     aspect-ratio: 1 / 1;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .pixelClasse {
