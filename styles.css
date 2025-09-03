@@ -19,3 +19,25 @@ body{
 .pixel{
     background-color: white;
 }
+
+
+#buttonZeichnen{
+    background: linear-gradient(135deg, #1e4974ff, #195589ff);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 999px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#buttonRadieren{
+    background: linear-gradient(135deg, #3a8dde, #1e6fb8);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 999px;
+    font-size: 16px;
+    font-weight: bold;
+}
+

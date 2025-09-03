@@ -2,17 +2,26 @@ const reglerGröße = document.getElementById("reglerGrößeZeichenfläche");
 const zeichenflaeche = document.getElementById("zeichenflaeche");
 const zeichenfleacheBreiteInPixel = (zeichenflaeche.clientWidth);
 
+
 //Erstellung der Zeichenflaeche durch verschachtelte Arrays
-reglerGröße.addEventListener("input", function erstellungZeichenflaeche(){
+document.addEventListener("DOMContentLoaded",function(){
+    erstellungZeichenflaeche();
+});
+
+reglerGröße.addEventListener("input",function(){
+    erstellungZeichenflaeche();
+});
+
+function erstellungZeichenflaeche(){
     let zeichenflaecheBreite_X = parseInt(reglerGröße.value,10);
    
-    zeichenflaeche.innerHTML = "";
+    zeichenflaeche.innerHTML = ""; // Setzt das Zeichenfeld zurück
 
 
     const zeichenflaecheSpaltenLaenge_Y = [];
  
     for (let y = 0; y < zeichenflaecheBreite_X; y++) {
-                 
+
         const zeichenflaecheZeilenBreite_X = [];
         zeichenflaecheSpaltenLaenge_Y.push(zeichenflaecheZeilenBreite_X);
 
@@ -29,15 +38,46 @@ reglerGröße.addEventListener("input", function erstellungZeichenflaeche(){
             neueZeile.appendChild(pixel);  
         }        
     }  
+}
+
+
+
+//Funktionen für die Buttons
+let buttonZeichnenAktiv = true;
+let buttonRadierenAktiv = false;
+const buttonZeichnen = document.getElementById("buttonZeichnen");
+const buttonRadieren = document.getElementById("buttonRadieren");
+const farbwahlFlaeche = document.getElementById("farbwahlFlaeche");
+let verwendeteFarbe = farbwahlFlaeche.value;
+
+
+farbwahlFlaeche.addEventListener("input", function(){
+    verwendeteFarbe = farbwahlFlaeche.value;
 });
+
+buttonZeichnen.addEventListener("click", function(){
+    buttonZeichnenAktiv = true;
+    buttonRadierenAktiv = false;
+    buttonZeichnen.style.background = "linear-gradient(135deg, #1e4974ff, #195589ff)";
+    buttonRadieren.style.background = "linear-gradient(135deg, #3a8dde, #1e6fb8)";
+});
+
+buttonRadieren.addEventListener("click", function(){
+    buttonZeichnenAktiv = false;
+    buttonRadierenAktiv = true;   
+
+    buttonZeichnen.style.background = "linear-gradient(135deg, #3a8dde, #1e6fb8)"; 
+    buttonRadieren.style.background = "linear-gradient(135deg, #1e4974ff, #195589ff)";
+});
+
+
+
 
 
 //Färbung der Pixel beim Zeichnen
 let zeichenAktiv = false;
 
 document.addEventListener("mousedown", function(event) {
-    console.log('test')
-    //event.preventDefault();
     zeichenAktiv = true;
     färbePixel(event.clientX, event.clientY);
 });
@@ -46,7 +86,6 @@ document.addEventListener("mouseup", function() {
 });
 
 document.addEventListener("mouseover", function (event) {
-    //event.preventDefault();
     if (zeichenAktiv){
         färbePixel(event.clientX, event.clientY);
     }
@@ -54,7 +93,11 @@ document.addEventListener("mouseover", function (event) {
 
 function färbePixel(x, y){
     const angewählterPixel = document.elementFromPoint(x, y); 
-    if (angewählterPixel.classList.contains("pixel")){
-        angewählterPixel.style.backgroundColor = "black"; 
+    if (angewählterPixel.classList.contains("pixel") && buttonZeichnenAktiv){
+        angewählterPixel.style.backgroundColor = verwendeteFarbe; 
+        console.log(verwendeteFarbe);
+    }
+    if (angewählterPixel.classList.contains("pixel") && buttonRadierenAktiv){
+        angewählterPixel.style.backgroundColor = "white"; 
     }
 }
