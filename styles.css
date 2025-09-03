@@ -3,19 +3,19 @@ body{
     background-color: rgb(243, 243, 243);
 }
 
-
-
 .zeichenflaecheClasse{
     margin-top: 10%;
     margin-bottom: 30%;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
+    max-width: 650px;
     aspect-ratio: 1 / 1;
     display: flex;
     justify-content: center;
+    user-select: none;
 }
 
-.pixelClasse {
+.pixel{
     background-color: white;
 }
